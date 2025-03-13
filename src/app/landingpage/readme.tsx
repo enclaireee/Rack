@@ -22,7 +22,7 @@ const Readme = () => {
             viewport={{ once: true }}
             variants={fadeInVariants}
         >
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-4xl mx-auto pt-20">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl font-bold text-primary mb-3">Welcome to Rack</h2>
                     <p className="text-lg text-gray-300 max-w-2xl mx-auto">
