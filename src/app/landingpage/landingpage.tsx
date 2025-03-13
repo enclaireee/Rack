@@ -1,7 +1,6 @@
 "use client";
 import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
-import Readme from "./readme";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -250,8 +249,6 @@ export default function Page() {
                                 </div>
                             </div>
                         </div>
-
-                        <Readme />
                     </>
                 )}
             </AnimatePresence>

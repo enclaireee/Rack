@@ -6,9 +6,9 @@ import { Github } from "lucide-react";
 
 export default function Footer() {
     return (
-        <div className="relative w-full h-[150px] sm:h-[300px]" style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%" }}>
-            <div className="fixed w-full h-[300px] bottom-0 z-10">
-                <div className="h-[300px] bg-primary text-white p-6 sm:px-12 flex justify-between items-end relative overflow-hidden">
+        <div className="relative w-full h-[300px] sm:h-[400px]" style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%" }}>
+            <div className="fixed w-full h-[400px] bottom-0 z-10">
+                <div className="h-[400px] bg-primary text-white p-6 sm:px-12 flex justify-between items-end relative overflow-hidden">
                     <div className="flex flex-col items-start relative z-20">
                         <div className="relative">
                             <Image

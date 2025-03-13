@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Poppins } from "next/font/google";
+import Lenis from "@/components/lenisscroll"
 import "./globals.css";
 
 const poppins = Poppins({
@@ -32,7 +33,8 @@ export default function RootLayout({ children }: Readonly<{
         <body
             className={`${poppins.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-        { children }
+        <Lenis />
+        {children}
         </body>
         </html>
     );
