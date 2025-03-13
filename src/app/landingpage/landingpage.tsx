@@ -78,6 +78,9 @@ export default function Page() {
 
     const titleLetters = "Rack".split("");
 
+    // Increase number of floating elements
+    const numFloatingElements = 12;
+
     return (
         <>
             <AnimatePresence>
@@ -85,7 +88,7 @@ export default function Page() {
                     <>
                         <div className="min-h-screen relative">
                             <motion.div
-                                className="absolute inset-0 bg-gradient-to-br from-primary to-base-300"
+                                className="absolute inset-0 bg-gradient-to-br from-black to-neutral-900"
                                 initial="hidden"
                                 animate="visible"
                                 variants={backgroundVariants}
@@ -96,7 +99,7 @@ export default function Page() {
                                     <div className="px-8 md:px-16 lg:px-24 text-center z-10">
 
                                         <motion.div
-                                            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-accent/20 blur-2xl"
+                                            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-gray-400/20 blur-2xl"
                                             initial={{ scale: 0 }}
                                             animate={{ scale: 1 }}
                                             transition={{ duration: 1.5, ease: "easeOut" }}
@@ -111,7 +114,7 @@ export default function Page() {
                                             {titleLetters.map((letter, index) => (
                                                 <motion.div
                                                     key={index}
-                                                    className="text-7xl md:text-9xl text-primary-content font-extrabold z-10"
+                                                    className="text-7xl md:text-9xl text-primary font-extrabold z-10"
                                                     variants={letterVariants}
                                                 >
                                                     {letter}
@@ -120,7 +123,7 @@ export default function Page() {
                                         </motion.div>
 
                                         <motion.p
-                                            className="text-2xl md:text-4xl text-secondary-content font-bold mt-2 z-10"
+                                            className="text-2xl md:text-4xl text-gray-300 font-bold mt-2 z-20"
                                             variants={taglineVariants}
                                             initial="hidden"
                                             animate="visible"
@@ -132,38 +135,38 @@ export default function Page() {
                                             variants={buttonVariants}
                                             initial="hidden"
                                             animate="visible"
-                                            className="mt-12"
+                                            className="mt-12 relative z-50"
                                         >
                                             <Link href="#readme-section" className="inline-block">
-                                                <div className="btn btn-secondary btn-lg hover:scale-105 active:scale-95 transition-all">
+                                                <div className="btn btn-primary btn-lg hover:scale-105 hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] active:scale-95 transition-all pointer-events-auto">
                                                     Get Started
                                                 </div>
                                             </Link>
                                         </motion.div>
 
-                                        {[...Array(5)].map((_, i) => (
+                                        {[...Array(numFloatingElements)].map((_, i) => (
                                             <motion.div
                                                 key={i}
-                                                className={`absolute rounded-full bg-secondary/30 -z-10`}
+                                                className={`absolute rounded-full bg-gradient-to-r from-gray-400/40 to-gray-500/50 shadow-[0_0_15px_rgba(255,255,255,0.1)] backdrop-blur-sm pointer-events-none z-10`}
                                                 style={{
-                                                    width: Math.random() * 100 + 50,
-                                                    height: Math.random() * 100 + 50
+                                                    width: Math.random() * 120 + 60,
+                                                    height: Math.random() * 120 + 60
                                                 }}
                                                 initial={{
-                                                    x: Math.random() * 1000 - 500,
-                                                    y: Math.random() * 1000 - 500,
+                                                    x: Math.random() * window.innerWidth - window.innerWidth/2,
+                                                    y: Math.random() * window.innerHeight - window.innerHeight/2,
                                                     opacity: 0
                                                 }}
                                                 animate={{
-                                                    x: Math.random() * 1000 - 500,
-                                                    y: Math.random() * 1000 - 500,
-                                                    opacity: [0, 0.4, 0],
+                                                    x: Math.random() * window.innerWidth - window.innerWidth/2,
+                                                    y: Math.random() * window.innerHeight - window.innerHeight/2,
+                                                    opacity: [0, 0.6, 0],
                                                     scale: [0, 1, 0]
                                                 }}
                                                 transition={{
                                                     repeat: Infinity,
-                                                    duration: 10 + i * 2,
-                                                    delay: i * 0.5,
+                                                    duration: 8 + i * 1.5, // Slightly faster animations
+                                                    delay: i * 0.3, // Reduced delay for more frequent spawning
                                                     ease: "linear"
                                                 }}
                                             />
