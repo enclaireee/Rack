@@ -1,8 +1,9 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
 import Readme from "./readme";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Page() {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -38,6 +39,43 @@ export default function Page() {
                 type: "spring",
                 damping: 10,
                 stiffness: 100
+            }
+        }
+    };
+
+    const logoVariants = {
+        hidden: {
+            opacity: 0,
+            scale: 0.6,
+            y: 20
+        },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            transition: {
+                delay: 0.7,
+                type: "spring",
+                damping: 12,
+                stiffness: 100
+            }
+        }
+    };
+
+    const pulseVariants = {
+        initial: {
+            boxShadow: "0 0 0 0 rgba(var(--primary-rgb), 0.7)"
+        },
+        pulse: {
+            boxShadow: [
+                "0 0 0 0 rgba(var(--primary-rgb), 0.7)",
+                "0 0 0 10px rgba(var(--primary-rgb), 0)",
+            ],
+            transition: {
+                delay: 1.5,
+                duration: 1.5,
+                repeat: Infinity,
+                repeatDelay: 1
             }
         }
     };
@@ -78,8 +116,7 @@ export default function Page() {
 
     const titleLetters = "Rack".split("");
 
-    // Increase number of floating elements
-    const numFloatingElements = 12;
+    const numFloatingElements = 15;
 
     return (
         <>
@@ -105,22 +142,60 @@ export default function Page() {
                                             transition={{ duration: 1.5, ease: "easeOut" }}
                                         />
 
-                                        <motion.div
-                                            className="flex justify-center"
-                                            variants={titleVariants}
-                                            initial="hidden"
-                                            animate="visible"
-                                        >
-                                            {titleLetters.map((letter, index) => (
+                                        <div className="flex items-center justify-center">
+                                            <motion.div
+                                                className="flex items-center"
+                                                variants={titleVariants}
+                                                initial="hidden"
+                                                animate="visible"
+                                            >
+                                                {titleLetters.map((letter, index) => (
+                                                    <motion.div
+                                                        key={index}
+                                                        className="text-7xl md:text-9xl text-primary font-extrabold z-10"
+                                                        variants={letterVariants}
+                                                    >
+                                                        {letter}
+                                                    </motion.div>
+                                                ))}
+                                            </motion.div>
+
+                                            <motion.div
+                                                className="bg-primary rounded-lg p-3 ml-3 md:ml-5 shadow-lg shadow-primary/30 flex items-center justify-center h-16 md:h-20 border border-primary/30 relative overflow-hidden"
+                                                variants={logoVariants}
+                                                initial="hidden"
+                                                animate="visible"
+                                            >
                                                 <motion.div
-                                                    key={index}
-                                                    className="text-7xl md:text-9xl text-primary font-extrabold z-10"
-                                                    variants={letterVariants}
+                                                    className="absolute inset-0 bg-gradient-to-tr from-primary to-primary/80 z-0"
+                                                    animate={{
+                                                        background: [
+                                                            "linear-gradient(to top right, var(--primary) 0%, var(--primary-focus) 100%)",
+                                                            "linear-gradient(to bottom right, var(--primary) 0%, var(--primary-focus) 100%)"
+                                                        ]
+                                                    }}
+                                                    transition={{
+                                                        duration: 3,
+                                                        repeat: Infinity,
+                                                        repeatType: "reverse"
+                                                    }}
+                                                />
+                                                <motion.div
+                                                    className="z-10 relative"
+                                                    initial="initial"
+                                                    animate="pulse"
+                                                    variants={pulseVariants}
                                                 >
-                                                    {letter}
+                                                    <Image
+                                                        src="/Logo.png"
+                                                        alt="Rack Logo"
+                                                        width={48}
+                                                        height={48}
+                                                        className="object-contain"
+                                                    />
                                                 </motion.div>
-                                            ))}
-                                        </motion.div>
+                                            </motion.div>
+                                        </div>
 
                                         <motion.p
                                             className="text-2xl md:text-4xl text-gray-300 font-bold mt-2 z-20"
@@ -165,8 +240,8 @@ export default function Page() {
                                                 }}
                                                 transition={{
                                                     repeat: Infinity,
-                                                    duration: 8 + i * 1.5, // Slightly faster animations
-                                                    delay: i * 0.3, // Reduced delay for more frequent spawning
+                                                    duration: 8 + i * 1.5,
+                                                    delay: i * 0.3,
                                                     ease: "linear"
                                                 }}
                                             />

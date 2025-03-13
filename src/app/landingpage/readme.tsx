@@ -30,7 +30,6 @@ const Readme = () => {
                     </p>
                 </div>
 
-                {/* Simplified Features - 2x2 Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                     <motion.div
                         variants={fadeInVariants}
