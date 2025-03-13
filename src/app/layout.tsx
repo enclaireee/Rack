@@ -20,8 +20,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Insert Here",
-    description: "Insert Here",
+    title: "Rack - Your Personl Organizer",
+    description: "An Organizer app for your personal needs",
 };
 
 export default function RootLayout({ children }: Readonly<{

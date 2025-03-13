@@ -3,7 +3,7 @@
 Rack is a digital binder designed to store and organize all your college resources in one place. Whether it's notes, links, PDFs, PPTs, or any other academic materials, Rack helps you keep everything neatly arranged and easily accessible.
 
 
-![Landing Page](/public/Landingpage.png)
+![Landing Page](/public/LandingPage.png)
 ![About Page](/public/AboutPage.png)
 
 
