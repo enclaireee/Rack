@@ -115,7 +115,7 @@ export default function Page() {
 
     const titleLetters = "Rack".split("");
 
-    const numFloatingElements = 15;
+    const numFloatingElements = 12;
 
     return (
         <>
